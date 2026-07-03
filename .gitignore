@@ -1,0 +1,10 @@
+.DS_Store
+backend/uploads/
+frontend/.env
+frontend/.env.local
+frontend/.env.staging
+frontend/.env.production
+backend/.env
+backend/.env.local
+backend/.env.staging
+backend/.env.production
