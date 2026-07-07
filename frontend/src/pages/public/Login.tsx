@@ -17,7 +17,8 @@ import imgEyeIcon      from "../../assets/icons/eye-icon.svg";
 import imgArrowIcon    from "../../assets/icons/arrow-icon.svg";
 import imgGoogleIcon   from "../../assets/icons/google-icon.svg";
 import imgMsIcon       from "../../assets/icons/microsoft-icon.svg";
-import imgLinkedInIcon from "../../assets/icons/linkedin-icon.svg";
+// import imgLinkedInIcon from "../../assets/icons/linkedin-icon.svg";
+import imgAppleIcon from "../../assets/icons/signup-apple.svg";
 import imgSoc2Icon     from "../../assets/icons/soc2-icon.svg";
 import imgEncIcon      from "../../assets/icons/enc-icon.svg";
 import imgGdprIcon     from "../../assets/icons/gdpr-icon.svg";
@@ -95,21 +96,21 @@ export default function Login() {
     }
   }
 
-  function loginWithLinkedIn() {
-    const clientId    = import.meta.env.VITE_LINKEDIN_CLIENT_ID;
-    const redirectUri = encodeURIComponent(window.location.origin + "/auth/linkedin/callback");
-    const scope       = encodeURIComponent("openid profile email");
+  function loginWithApple() {
+    const clientId    = import.meta.env.VITE_APPLE_CLIENT_ID;
+    const redirectUri = encodeURIComponent(window.location.origin + "/auth/apple/callback");
     const state       = crypto.randomUUID();
-    sessionStorage.setItem("linkedin_state", state);
-    sessionStorage.setItem("linkedin_post_login", "/dashboard");
+    const nonce       = crypto.randomUUID();
+    sessionStorage.setItem("apple_state", state);
     window.location.href =
-      `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
+      `https://appleid.apple.com/auth/authorize?response_type=code%20id_token&response_mode=form_post` +
+      `&client_id=${clientId}&redirect_uri=${redirectUri}&scope=name%20email&state=${state}&nonce=${nonce}`;
   }
 
   const SSO_BUTTONS = [
     { icon: imgGoogleIcon,   label: "Sign in with Google",    provider: "google",    onClick: () => loginWithGoogle()    },
     { icon: imgMsIcon,       label: "Sign in with Microsoft", provider: "microsoft", onClick: loginWithMicrosoft          },
-    { icon: imgLinkedInIcon, label: "Sign in with LinkedIn",  provider: "linkedin",  onClick: loginWithLinkedIn           },
+    { icon: imgAppleIcon,  label: "Sign in with Apple",     provider: "apple",     onClick: loginWithApple           },
   ];
 
   return (

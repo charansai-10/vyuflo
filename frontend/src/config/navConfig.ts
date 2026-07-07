@@ -116,9 +116,7 @@ const appAdminNav: NavItem[] = [
   { to: '/admin/visa-types',             label: 'Visa Types Manager',             icon: { kind: 'lucide', Icon: FileText         } },
   { to: '/admin/subscription-pricing',   label: 'Subscription & Pricing', icon: { kind: 'lucide', Icon: Package          } },
   { to: '/admin/revenue-dashboard',      label: 'Revenue Dashboard',                icon: { kind: 'lucide', Icon: DollarSign       } },
-  
   { to: '/admin/system-audit-logs',      label: 'Audit Logs',             icon: { kind: 'lucide', Icon: ScrollText       } },
-  
   { to: '/admin/help-support',           label: 'Help & Support',         icon: { kind: 'lucide', Icon: HelpCircle       } },
 ];
 
